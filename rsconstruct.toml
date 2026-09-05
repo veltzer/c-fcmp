@@ -28,3 +28,13 @@ output_files = ["out/libfcmp.so", "out/fcmp.pc"]
 # lint the GitHub Actions workflow files with actionlint
 [processor.actionlint]
 src_dirs = [".github/workflows"]
+
+# ─── c / c++ ─────────────────────────────────────────────────────────────────
+
+[processor.cppcheck]
+src_files = ["fcmp.c"]
+args = [
+	"--error-exitcode=1",
+	"--enable=warning,style,performance,portability",
+	"--inline-suppr",
+]
