@@ -1,5 +1,0 @@
-fcmp (1.2.2-1) unstable; urgency=low
-
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
-
- -- Mark Veltzer <mark@veltzer.net>  Sun, 05 Feb 2012 01:28:17 +0200

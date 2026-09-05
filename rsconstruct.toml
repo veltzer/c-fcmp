@@ -1,0 +1,30 @@
+# rsconstruct build configuration for this repository.
+
+[analyzer.python]
+
+[processor.ruff]
+src_dirs = ["scripts"]
+
+[processor.pylint]
+src_dirs = ["scripts"]
+
+[processor.mypy]
+src_dirs = ["scripts"]
+
+[processor.taplo]
+src_dirs = ["."]
+
+# ─── repo-specific configuration ────────────────────────────────────────────
+
+# The autotools build (configure.ac, Makefile.am) produced one libtool
+# library from fcmp.c plus a configure-filled fcmp.pc. scripts/build_fcmp.py
+# runs the equivalent gcc link and writes the .pc file; the install and
+# debian-packaging steps were deploy actions, not builds, and are not kept.
+[processor.explicit.fcmp]
+command = "scripts/build_fcmp.py"
+inputs = ["fcmp.c", "fcmp.h", "scripts/build_fcmp.py"]
+output_files = ["out/libfcmp.so", "out/fcmp.pc"]
+
+# lint the GitHub Actions workflow files with actionlint
+[processor.actionlint]
+src_dirs = [".github/workflows"]
