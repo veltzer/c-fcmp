@@ -6,14 +6,14 @@ reject_dot_src_dirs = true
 
 [analyzer.python]
 
-[processor.ruff]
+[processor.checker.ruff]
 src_dirs = ["scripts"]
 
 
-[processor.mypy]
+[processor.checker.mypy]
 src_dirs = ["scripts"]
 
-[processor.taplo]
+[processor.checker.taplo]
 src_files = ["pyproject.toml", "rsconstruct.toml"]
 
 # ─── repo-specific configuration ────────────────────────────────────────────
@@ -22,18 +22,18 @@ src_files = ["pyproject.toml", "rsconstruct.toml"]
 # library from fcmp.c plus a configure-filled fcmp.pc. scripts/build_fcmp.py
 # runs the equivalent gcc link and writes the .pc file; the install and
 # debian-packaging steps were deploy actions, not builds, and are not kept.
-[processor.explicit.fcmp]
+[processor.explicit.generic.fcmp]
 command = "scripts/build_fcmp.py"
 inputs = ["fcmp.c", "fcmp.h", "scripts/build_fcmp.py"]
 output_files = ["out/libfcmp.so", "out/fcmp.pc"]
 
 # lint the GitHub Actions workflow files with actionlint
-[processor.actionlint]
+[processor.checker.actionlint]
 src_dirs = [".github/workflows"]
 
 # ─── c / c++ ─────────────────────────────────────────────────────────────────
 
-[processor.cppcheck]
+[processor.checker.cppcheck]
 src_files = ["fcmp.c"]
 args = [
 	"--error-exitcode=1",
