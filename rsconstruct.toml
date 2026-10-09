@@ -28,7 +28,7 @@ inputs = ["fcmp.c", "fcmp.h", "scripts/build_fcmp.py"]
 output_files = ["out/libfcmp.so", "out/fcmp.pc"]
 
 # lint the GitHub Actions workflow files with actionlint
-[processor.checker.actionlint]
+[processor.checker.iactionlint]
 src_dirs = [".github/workflows"]
 
 # ─── c / c++ ─────────────────────────────────────────────────────────────────
