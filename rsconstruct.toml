@@ -42,11 +42,14 @@ args = ["--offline", "--no-progress", "--persona=pedantic"]
 
 # ─── c / c++ ─────────────────────────────────────────────────────────────────
 
+# One single-file library: one run over fcmp.c (the default per-file mode is the same as batch here).
 [processor.checker.cppcheck]
+dep_inputs = ["cppcheck.cfg"]
 src_files = ["fcmp.c"]
 args = [
 	"--error-exitcode=1",
-	"--enable=warning,style,performance,portability",
+	"--enable=warning,style,performance,portability,information,unusedFunction",
 	"--check-level=exhaustive",
 	"--inline-suppr",
+	"--library=cppcheck.cfg",
 ]
