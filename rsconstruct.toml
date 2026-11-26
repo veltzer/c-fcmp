@@ -27,6 +27,10 @@ command = "scripts/build_fcmp.py"
 inputs = ["fcmp.c", "fcmp.h", "scripts/build_fcmp.py"]
 output_files = ["out/libfcmp.so", "out/fcmp.pc"]
 
+# lint the Lua configuration with luacheck (policy: .luacheckrc)
+[processor.checker.iluacheck]
+src_dirs = ["config"]
+
 # lint the YAML files with yamllint (policy: .yamllint.yaml)
 [processor.checker.iyamllint]
 src_dirs = [".github"]
