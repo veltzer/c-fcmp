@@ -23,7 +23,7 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     lib = os.path.join(OUT, "libfcmp.so")
     ret = subprocess.call([
-        "gcc", "-Wall", "-Werror", "-pedantic", "-fPIC", "-shared",
+        "gcc", "-Wall", "-Wextra", "-Werror", "-pedantic", "-fPIC", "-shared",
         f"-Wl,-soname,{SONAME}",
         "-o", lib, "fcmp.c", "-lm",
     ])
